@@ -3,15 +3,16 @@
 {% block content %}
 
 <h1>Message board</h1>
-
+<div class="posts">
 {% for post in all_posts %}
 {% if post %}
 <div class="post-entry">
 <h2><a href="{% url 'post_detail' post.pk %}">{{post.title}}</a></h2>
 <p>{{post.body}}</p>
 </div>
-<hr>
+
 {% endif %}
 {% endfor %}
+</div>
 
 {% endblock content %}

@@ -29,10 +29,12 @@ class PostCreateView(CreateView):
 class PostEditView(UpdateView):
     model = Post
     template_name = 'post_edit.html'
-    fields = ['title','body']
+    fields = ['title', 'body']
+
 
 class PostDeleteView(DeleteView):
     model = Post
-    template_name = 'post_delete.html'
     success_url = reverse_lazy('home')
 
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
