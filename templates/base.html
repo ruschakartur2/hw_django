@@ -9,8 +9,20 @@
 <body>
 <header>
     <nav class="navbar">
-    <a href="{% url 'home' %}">Home</a>  <a href="{% url 'about' %}">About</a>
-    <a href="{% url 'post_add' %}"> Add new post</a>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+
+        {% if user.is_authenticated %}
+        <a href="{% url 'post_add' %}"> Add new post</a>
+        <div class="user-profile">
+        <a href=""><b>{{ user.username }}</b></a> <a href="{% url 'logout' %}" style="margin-left: 10px;">Log out</a>
+        </div>
+            {% else %}
+        <div class="auth-reg">
+        <a href=" {% url 'signup' %}">Sign up</a>
+        <a href="{% url 'login' %}" style="margin-left: 30px;">Log in</a>
+        </div>
+            {% endif %}
     </nav>
 </header>
 
